@@ -45,9 +45,30 @@
         .top-balance .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; background: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
         .top-avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,var(--gold),#f59e0b); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .7rem; cursor: pointer; transition: all .3s; flex-shrink: 0; border: none; color: #0a0a0e; position: relative; }
         .top-avatar:hover { transform: scale(1.08); box-shadow: 0 0 20px var(--gold-glow); }
-        .top-avatar .menu-dots { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: var(--card); border: 1px solid var(--border-light); border-radius: var(--radius-sm); overflow: hidden; min-width: 130px; z-index: 100; box-shadow: var(--shadow); }
-        .top-avatar .menu-dots button { width: 100%; padding: 11px 16px; background: none; border: none; color: var(--text-secondary); font-size: .8rem; text-align: left; cursor: pointer; transition: .2s; font-family: 'Inter', sans-serif; }
-        .top-avatar .menu-dots button:hover { background: var(--gold-dim); color: var(--gold); }
+        .profile-panel { display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: var(--card); border: 1px solid var(--gold-dim); border-radius: var(--radius); width: 280px; z-index: 999; box-shadow: var(--shadow-lg); animation: panelIn .25s cubic-bezier(.22,1,.36,1); }
+        @keyframes panelIn { from{opacity:0;transform:translateY(-8px)scale(.96)} to{opacity:1;transform:translateY(0)scale(1)} }
+        .profile-panel .pp-head { display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px; border-bottom: 1px solid var(--border); }
+        .profile-panel .pp-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg,var(--gold),#f59e0b); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; color: #0a0a0e; flex-shrink: 0; }
+        .profile-panel .pp-info { flex: 1; min-width: 0; }
+        .profile-panel .pp-name { font-size: .88rem; font-weight: 700; }
+        .profile-panel .pp-phone { font-size: .7rem; color: var(--text-dim); margin-top: 1px; }
+        .profile-panel .pp-ref { padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: .7rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+        .profile-panel .pp-ref strong { color: var(--gold); font-weight: 600; }
+        .profile-panel .pp-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid var(--border); }
+        .profile-panel .pp-stat { padding: 10px 16px; text-align: center; }
+        .profile-panel .pp-stat+.pp-stat { border-left: 1px solid var(--border); }
+        .profile-panel .pp-stat .pp-sval { font-size: .95rem; font-weight: 800; color: var(--text); }
+        .profile-panel .pp-stat .pp-slbl { font-size: .6rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; margin-top: 1px; }
+        .profile-panel .pp-txns { padding: 10px 16px 6px; border-bottom: 1px solid var(--border); }
+        .profile-panel .pp-txns .pp-th { font-size: .65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+        .profile-panel .pp-txns .pp-ti { display: flex; justify-content: space-between; font-size: .72rem; padding: 4px 0; }
+        .profile-panel .pp-txns .pp-ti .pp-ta.plus { color: var(--green); }
+        .profile-panel .pp-txns .pp-ti .pp-ta.minus { color: var(--red); }
+        .profile-panel .pp-txns .pp-more { font-size: .65rem; color: var(--gold); text-align: center; padding: 4px 0 0; cursor: pointer; }
+        .profile-panel .pp-txns .pp-more:hover { opacity: .8; }
+        .profile-panel .pp-foot { padding: 10px 16px; }
+        .profile-panel .pp-foot button { width: 100%; padding: 9px; border: none; border-radius: 7px; cursor: pointer; font-weight: 600; font-size: .78rem; transition: all .2s; font-family: 'Inter', sans-serif; background: rgba(239,68,68,0.08); color: var(--red); border: 1px solid rgba(239,68,68,0.15); }
+        .profile-panel .pp-foot button:hover { background: rgba(239,68,68,0.15); }
         .page-container { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 16px calc(var(--nav-h) + 20px); scroll-behavior: smooth; }
         .page { display: none; animation: pageIn .4s cubic-bezier(.22,1,.36,1); }
         .page.active { display: block; }
@@ -254,10 +275,29 @@
                     <span class="dot gold"></span>
                     ₹<span id="topBalance">0</span>
                 </div>
-                <div class="top-avatar" id="topAvatar" onclick="toggleMenu()">
+                <div class="top-avatar" id="topAvatar" onclick="toggleProfile()">
                     <span id="avatarLetter">U</span>
-                    <div class="menu-dots" id="menuDots">
-                        <button onclick="logout()">🚪 Logout</button>
+                    <div class="profile-panel" id="profilePanel">
+                        <div class="pp-head">
+                            <div class="pp-av" id="ppAv">U</div>
+                            <div class="pp-info">
+                                <div class="pp-name" id="ppName">User</div>
+                                <div class="pp-phone" id="ppPhone">+91 0000000000</div>
+                            </div>
+                        </div>
+                        <div class="pp-ref">🏷️ Referral: <strong id="ppRef">None</strong></div>
+                        <div class="pp-stats">
+                            <div class="pp-stat"><div class="pp-sval" id="ppDep">₹0</div><div class="pp-slbl">Deposits</div></div>
+                            <div class="pp-stat"><div class="pp-sval" id="ppWin">₹0</div><div class="pp-slbl">Winnings</div></div>
+                        </div>
+                        <div class="pp-txns">
+                            <div class="pp-th">Recent Activity</div>
+                            <div id="ppTxnList"></div>
+                            <div class="pp-more" onclick="switchTab('transactions');toggleProfile()">View all →</div>
+                        </div>
+                        <div class="pp-foot">
+                            <button onclick="logout()">Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -663,13 +703,35 @@
         }
 
         // ─── Avatar menu ───
-        function toggleMenu(){
-            const menu = $('menuDots');
-            menu.style.display = menu.style.display==='block'?'none':'block';
+        function toggleProfile(){
+            const panel = $('profilePanel');
+            if(panel.style.display==='block'){ panel.style.display='none'; return; }
+            renderProfilePanel();
+            panel.style.display='block';
         }
         document.addEventListener('click', e=>{
-            if(!e.target.closest('.top-avatar')) $('menuDots').style.display='none';
+            if(!e.target.closest('.top-avatar')) $('profilePanel').style.display='none';
         });
+
+        function renderProfilePanel(){
+            if(!user) return;
+            const init = (user.name||'U').charAt(0).toUpperCase();
+            $('ppAv').textContent = init;
+            $('ppName').textContent = user.name||'User';
+            $('ppPhone').textContent = '+91 '+(user.phone||'0000000000');
+            $('ppRef').textContent = user.referral||'None';
+            $('ppDep').textContent = '₹'+(user.depositBalance||0);
+            $('ppWin').textContent = '₹'+(user.winningBalance||0);
+            const txns = (user.txns||[]).slice().reverse().slice(0,5);
+            const list = $('ppTxnList');
+            if(!txns.length){
+                list.innerHTML = '<div style="font-size:.68rem;color:var(--text-dim);padding:4px 0;">No activity</div>';
+            } else {
+                list.innerHTML = txns.map(t=>
+                    '<div class="pp-ti"><span>'+(t.note||'')+'</span><span class="pp-ta '+(t.type==='credit'?'plus':'minus')+'">'+(t.type==='credit'?'+':'-')+'₹'+(t.amt||0)+'</span></div>'
+                ).join('');
+            }
+        }
 
         // ─── Auth Tabs ───
         document.querySelectorAll('.auth-tab').forEach(tab => {
@@ -923,6 +985,8 @@
 
             const init = (user.name||'U').charAt(0).toUpperCase();
             $('avatarLetter').textContent = init;
+
+            if($('profilePanel').style.display==='block') renderProfilePanel();
 
             // Prediction stats
             $('psGames').textContent = user.gamesPlayed||0;
