@@ -44,33 +44,33 @@
         .top-balance:hover { background: rgba(240,180,41,0.18); border-color: rgba(240,180,41,0.25); }
         .top-balance .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; background: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
         .top-avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,var(--gold),#f59e0b); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .7rem; cursor: pointer; transition: all .3s; flex-shrink: 0; border: none; color: #0a0a0e; position: relative; }
-        .profile-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 998; background: transparent; }
+        .profile-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; background: rgba(0,0,0,0.35); backdrop-filter: blur(2px); }
         .profile-overlay.show { display: block; }
-        .profile-panel { display: none; position: fixed; top: 56px; right: 12px; width: 280px; max-width: calc(100vw - 24px); background: #0f0f17; border: 1px solid rgba(240,180,41,0.2); border-radius: var(--radius); z-index: 999; box-shadow: 0 20px 60px rgba(0,0,0,0.6); animation: panelIn .2s cubic-bezier(.22,1,.36,1); }
+        .profile-panel { display: none; position: fixed; top: 60px; right: 12px; width: 280px; max-width: calc(100vw - 24px); background: #13131c; border: 1px solid rgba(240,180,41,0.25); border-radius: 14px; z-index: 9999; box-shadow: 0 24px 80px rgba(0,0,0,0.7); animation: panelIn .18s cubic-bezier(.22,1,.36,1); }
         .profile-panel.show { display: block; }
-        @keyframes panelIn { from{opacity:0;transform:translateY(-6px)scale(.96)} to{opacity:1;transform:translateY(0)scale(1)} }
-        .profile-panel .pp-head { display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .profile-panel .pp-av { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg,var(--gold),#f59e0b); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .9rem; color: #0a0a0e; flex-shrink: 0; }
+        @keyframes panelIn { from{opacity:0;transform:translateY(-8px)scale(.95)} to{opacity:1;transform:translateY(0)scale(1)} }
+        .profile-panel .pp-head { display: flex; align-items: center; gap: 12px; padding: 18px 16px 14px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .profile-panel .pp-av { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg,#f0b429,#d97706); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .95rem; color: #0a0a0e; flex-shrink: 0; }
         .profile-panel .pp-info { flex: 1; min-width: 0; }
-        .profile-panel .pp-name { font-size: .9rem; font-weight: 700; color: #f2f0eb; }
-        .profile-panel .pp-phone { font-size: .7rem; color: #5c5c66; margin-top: 1px; }
-        .profile-panel .pp-ref { padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: .7rem; color: #5c5c66; display: flex; align-items: center; gap: 6px; background: rgba(240,180,41,0.04); }
-        .profile-panel .pp-ref strong { color: #f0b429; font-weight: 600; }
-        .profile-panel .pp-stats { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .profile-panel .pp-stat { padding: 12px 16px; text-align: center; }
-        .profile-panel .pp-stat+.pp-stat { border-left: 1px solid rgba(255,255,255,0.06); }
-        .profile-panel .pp-stat .pp-sval { font-size: 1rem; font-weight: 800; color: #f2f0eb; }
-        .profile-panel .pp-stat .pp-slbl { font-size: .6rem; color: #5c5c66; text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
-        .profile-panel .pp-txns { padding: 10px 16px 6px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .profile-panel .pp-txns .pp-th { font-size: .65rem; color: #5c5c66; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
-        .profile-panel .pp-txns .pp-ti { display: flex; justify-content: space-between; font-size: .72rem; padding: 4px 0; }
-        .profile-panel .pp-txns .pp-ti .pp-ta.plus { color: #10b981; }
-        .profile-panel .pp-txns .pp-ti .pp-ta.minus { color: #ef4444; }
-        .profile-panel .pp-txns .pp-more { font-size: .65rem; color: #f0b429; text-align: center; padding: 6px 0 2px; cursor: pointer; font-weight: 600; }
-        .profile-panel .pp-txns .pp-more:hover { opacity: .8; }
-        .profile-panel .pp-foot { padding: 10px 16px; }
-        .profile-panel .pp-foot button { width: 100%; padding: 9px; border: none; border-radius: 7px; cursor: pointer; font-weight: 600; font-size: .78rem; transition: all .2s; font-family: 'Inter', sans-serif; background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.15); }
-        .profile-panel .pp-foot button:hover { background: rgba(239,68,68,0.18); }
+        .profile-panel .pp-name { font-size: .95rem; font-weight: 700; color: #f0ede6; }
+        .profile-panel .pp-phone { font-size: .72rem; color: #888898; margin-top: 2px; }
+        .profile-panel .pp-ref { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: .72rem; color: #888898; display: flex; align-items: center; gap: 6px; background: rgba(240,180,41,0.05); }
+        .profile-panel .pp-ref strong { color: #f0b429; font-weight: 700; }
+        .profile-panel .pp-stats { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .profile-panel .pp-stat { padding: 14px 16px; text-align: center; }
+        .profile-panel .pp-stat+.pp-stat { border-left: 1px solid rgba(255,255,255,0.07); }
+        .profile-panel .pp-stat .pp-sval { font-size: 1.05rem; font-weight: 800; color: #f0ede6; }
+        .profile-panel .pp-stat .pp-slbl { font-size: .62rem; color: #888898; text-transform: uppercase; letter-spacing: .6px; margin-top: 3px; }
+        .profile-panel .pp-txns { padding: 12px 16px 8px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .profile-panel .pp-txns .pp-th { font-size: .62rem; color: #888898; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px; }
+        .profile-panel .pp-txns .pp-ti { display: flex; justify-content: space-between; font-size: .75rem; padding: 5px 0; color: #c8c5c0; }
+        .profile-panel .pp-txns .pp-ti .pp-ta.plus { color: #34d399; font-weight: 600; }
+        .profile-panel .pp-txns .pp-ti .pp-ta.minus { color: #f87171; font-weight: 600; }
+        .profile-panel .pp-txns .pp-more { font-size: .68rem; color: #f0b429; text-align: center; padding: 8px 0 2px; cursor: pointer; font-weight: 700; letter-spacing: .3px; }
+        .profile-panel .pp-txns .pp-more:hover { opacity: .75; }
+        .profile-panel .pp-foot { padding: 12px 16px; }
+        .profile-panel .pp-foot button { width: 100%; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: .8rem; transition: all .2s; font-family: 'Inter', sans-serif; background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.18); }
+        .profile-panel .pp-foot button:hover { background: rgba(239,68,68,0.22); }
         .page-container { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 16px calc(var(--nav-h) + 20px); scroll-behavior: smooth; }
         .page { display: none; animation: pageIn .4s cubic-bezier(.22,1,.36,1); }
         .page.active { display: block; }
@@ -280,29 +280,6 @@
                 <div class="top-avatar" id="topAvatar" onclick="toggleProfile()">
                     <span id="avatarLetter">U</span>
                 </div>
-                <div class="profile-panel" id="profilePanel">
-                    <div class="pp-head">
-                        <div class="pp-av" id="ppAv">U</div>
-                        <div class="pp-info">
-                            <div class="pp-name" id="ppName">User</div>
-                            <div class="pp-phone" id="ppPhone">+91 0000000000</div>
-                        </div>
-                    </div>
-                    <div class="pp-ref">🏷️ Referral: <strong id="ppRef">None</strong></div>
-                    <div class="pp-stats">
-                        <div class="pp-stat"><div class="pp-sval" id="ppDep">₹0</div><div class="pp-slbl">Deposits</div></div>
-                        <div class="pp-stat"><div class="pp-sval" id="ppWin">₹0</div><div class="pp-slbl">Winnings</div></div>
-                    </div>
-                    <div class="pp-txns">
-                        <div class="pp-th">Recent Activity</div>
-                        <div id="ppTxnList"></div>
-                        <div class="pp-more" onclick="switchTab('transactions');closeProfile()">View all →</div>
-                    </div>
-                    <div class="pp-foot">
-                        <button onclick="logout()">Logout</button>
-                    </div>
-                </div>
-                <div class="profile-overlay" id="profileOverlay" onclick="closeProfile()"></div>
             </div>
         </div>
 
@@ -526,6 +503,30 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                 <span>Activity</span>
             </button>
+        </div>
+    </div>
+
+    <div class="profile-overlay" id="profileOverlay" onclick="closeProfile()"></div>
+    <div class="profile-panel" id="profilePanel">
+        <div class="pp-head">
+            <div class="pp-av" id="ppAv">U</div>
+            <div class="pp-info">
+                <div class="pp-name" id="ppName">User</div>
+                <div class="pp-phone" id="ppPhone">+91 0000000000</div>
+            </div>
+        </div>
+        <div class="pp-ref">🏷️ Referral: <strong id="ppRef">None</strong></div>
+        <div class="pp-stats">
+            <div class="pp-stat"><div class="pp-sval" id="ppDep">₹0</div><div class="pp-slbl">Deposits</div></div>
+            <div class="pp-stat"><div class="pp-sval" id="ppWin">₹0</div><div class="pp-slbl">Winnings</div></div>
+        </div>
+        <div class="pp-txns">
+            <div class="pp-th">Recent Activity</div>
+            <div id="ppTxnList"></div>
+            <div class="pp-more" onclick="switchTab('transactions');closeProfile()">View all &rarr;</div>
+        </div>
+        <div class="pp-foot">
+            <button onclick="logout()">Logout</button>
         </div>
     </div>
 
